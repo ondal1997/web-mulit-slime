@@ -132,7 +132,7 @@ const connectNetwork = () => {
     socket = io()
 
     socket.on('connect', () => {
-        setTimeout(startGame)
+        startGame()
     })
 
     socket.on('disconnect', () => {
