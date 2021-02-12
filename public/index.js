@@ -80,7 +80,7 @@ const inputHandler = (event) => {
     const x = event.offsetX
     const y = event.offsetY
 
-    const angle = Math.atan2(y - entities[socket.id].position.y, x - entities[socket.id].position.x)
+    const angle = Math.atan2(y - entities[myId].position.y, x - entities[myId].position.x)
 
     socket.emit('move', angle)
 }
@@ -127,11 +127,13 @@ for (const imageResource of imageResources) {
 
 // io 준비 ---
 let socket
+let myId
 
 const connectNetwork = () => {
     socket = io()
 
     socket.on('connect', () => {
+        myId = socket.id
         startGame()
     })
 
